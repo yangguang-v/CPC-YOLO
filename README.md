@@ -132,18 +132,18 @@ Table Supp-V COMPARISON RESULTS OF DIFFERENT SHIP DETECTION METHODS IN VARIOUS S
       <th colspan="5">Offshore Scenes (%)</th>
     </tr>
     <tr>
-      <th>P↓</th><th>R↓</th><th>AP50↑</th><th>AP↑</th><th>F1↑</th>
-      <th>P↓</th><th>R↓</th><th>AP50↑</th><th>AP↑</th><th>F1↑</th>
+      <th>P</th><th>R</th><th>AP50</th><th>AP↑</th><th>F1</th>
+      <th>P</th><th>R</th><th>AP50</th><th>AP↑</th><th>F1</th>
     </tr>
   </thead>
   <tbody>
-    <tr><td>RetinaNet</td><td>26.5↑</td><td>91.03↑</td><td>30.55↑</td><td>10.24↑</td><td>41.05↑</td><td>84.40↑</td><td>85.32↑</td><td>88.97↑</td><td>34.03↑</td><td>84.86↑</td></tr>
-    <tr><td>Cascade R-CNN</td><td>52.3↑</td><td>51.41↑</td><td>45.2↑</td><td>12.00↑</td><td>51.85↑</td><td>83.1↑</td><td>93.49↑</td><td>92.11↑</td><td>36.40↑</td><td>87.99↑</td></tr>
-    <tr><td>Improved-FCOS</td><td>60.6↑</td><td>60.10↑</td><td>54.16↑</td><td>-</td><td></td><td>89.20↑</td><td>94.41↑</td><td>92.84↑</td><td>-</td><td>91.73↑</td></tr>
-    <tr><td>YOLOv10n</td><td>61.53↑</td><td>36.14↑</td><td>47.71↑</td><td>20.58↑</td><td>45.53↑</td><td>86.78↑</td><td>80.03↑</td><td>89.02↑</td><td>39.79↑</td><td>83.27↑</td></tr>
-    <tr><td>YOLOv12n</td><td>69.42↑</td><td>41.58↑</td><td>55.02↑</td><td>24.86↑</td><td>52.00↑</td><td>92.63↑</td><td>89.17↑</td><td>93.83↑</td><td>41.78↑</td><td>90.87↑</td></tr>
-    <tr><td>YOLOv11n</td><td>66.71↑</td><td>37.03↑</td><td>53.62↑</td><td>24.21↑</td><td>47.62↑</td><td>91.15↑</td><td>88.86↑</td><td>92.76↑</td><td>41.27↑</td><td>90.02↑</td></tr>
-    <tr><td>CPC-YOLO (Ours)</td><td>68.97↑</td><td>39.13↑</td><td>54.47↑</td><td>24.79↑</td><td>49.93↑</td><td>91.35↑</td><td>89.44↑</td><td>93.47↑</td><td>42.34↑</td><td>90.38↑</td></tr>
+    <tr><td>RetinaNet</td><td>26.5</td><td>91.03</td><td>30.55</td><td>10.24</td><td>41.05</td><td>84.40</td><td>85.32</td><td>88.97</td><td>34.03</td><td>84.86</td></tr>
+    <tr><td>Cascade R-CNN</td><td>52.3</td><td>51.41</td><td>45.2</td><td>12.00</td><td>51.85</td><td>83.1</td><td>93.49</td><td>92.11</td><td>36.40</td><td>87.99</td></tr>
+    <tr><td>Improved-FCOS</td><td>60.6</td><td>60.10</td><td>54.16</td><td>-</td><td></td><td>89.20</td><td>94.41</td><td>92.84</td><td>-</td><td>91.73</td></tr>
+    <tr><td>YOLOv10n</td><td>61.53</td><td>36.14</td><td>47.71</td><td>20.58</td><td>45.53</td><td>86.78</td><td>80.03</td><td>89.02</td><td>39.79</td><td>83.27</td></tr>
+    <tr><td>YOLOv12n</td><td>69.42</td><td>41.58</td><td>55.02</td><td>24.86</td><td>52.00</td><td>92.63</td><td>89.17</td><td>93.83</td><td>41.78</td><td>90.87</td></tr>
+    <tr><td>YOLOv11n</td><td>66.71</td><td>37.03</td><td>53.62</td><td>24.21</td><td>47.62</td><td>91.15</td><td>88.86</td><td>92.76</td><td>41.27</td><td>90.02</td></tr>
+    <tr><td>CPC-YOLO (Ours)</td><td>68.97</td><td>39.13</td><td>54.47</td><td>24.79</td><td>49.93</td><td>91.35↑</td><td>89.44↑</td><td>93.47</td><td>42.34</td><td>90.38</td></tr>
   </tbody>
 </table>
 
