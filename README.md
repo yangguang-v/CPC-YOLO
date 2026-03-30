@@ -163,8 +163,8 @@ Table Supp-VI COMPARISON OF CPC-YOLO WITH SPECIALIZED SAR SHIP DETECTION METHODS
   <tbody>
     <tr>
       <td>DADP [S1]</td>
-      <td>68.30</td><td>42.90</td><td>39.17</td>-<td></td><td>52.70</td>
-      <td>90.70</td><td>90.70</td><td>89.21</td>-<td></td><td>90.7</td>
+      <td>68.30</td><td>42.90</td><td>39.17</td><td>-</td><td>52.70</td>
+      <td>90.70</td><td>90.70</td><td>89.21</td><td>-</td><td>90.7</td>
     </tr>
     <tr>
       <td>BANet [S2]</td>
