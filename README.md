@@ -21,4 +21,8 @@ Let the center coordinates of the ground-truth box $B^{gt}$ and the anchor box $
 $$b_l^{gt}=x_c^{gt}-\frac{w^{gt} \ast ratio}{2}, \quad b_r^{gt}=x_c^{gt} + \frac{w^{gt}\ast ratio}{2}  \quad\quad {(4)}$$ 
 $$b_t^{gt}=y_c^{gt}-\frac{h^{gt} \ast ratio}{2}, \quad b_b^{gt}=y_c^{gt} + \frac{h^{gt}\ast ratio}{2}  \quad\quad {(5)}$$ 
 $$\quad\quad\quad b_l=x_c-\frac{h \ast ratio}{2}, \quad b_r=x_c + \frac{h^\ast ratio}{2}  \quad\quad\quad\quad {(6)}$$ 
-$$\quad\quad\quad b_t=y_c-\frac{h \ast ratio}{2}, \quad b_r=y_c + \frac{h^\ast ratio}{2}  \quad\quad\quad\quad {(7)}$$ 
+$$\quad\quad\quad b_t=y_c-\frac{h \ast ratio}{2}, \quad b_b=y_c + \frac{h^\ast ratio}{2}  \quad\quad\quad\quad {(7)}$$ 
+
+where $b_l^{gt},b_r^{gt},b_t^{gt},b_b^{gt}$ denote the coordinates of the left, right, top, and bottom boundaries of the ground-truth box, respectively, and $b_l,b_r,b_t,b_b$ denote the coordinates of the left, right, top, and bottom boundaries of the anchor box, respectively. Based on the generated auxiliary bounding boxes, the calculation of the Inner Intersection over Union ($IoU^{inner}$) is defined as follows:
+
+$$ inner=\big(\min(b_r^{gt},b_r)-\max(b_l^{gt},b_l)\big)\cdot\big(\min( b_b^{gt},b_b)-\max(b_t^{gt},b_l)\big) \quad\quad {(8)}$$ 
