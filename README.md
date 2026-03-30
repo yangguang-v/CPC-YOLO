@@ -202,3 +202,39 @@ The comparison reveals that the features at Layer 19 of CPC-YOLO exhibit a promi
 
 (3) Attention Module Heatmap Analysis (Layer 10)
 To intuitively compare the feature extraction differences between C2PSA and our proposed C2PSA_CPCA module, we extracted the heatmaps at Layer 10 of both models (as shown in Fig. Supp-4 and Fig. Supp-6). It can be observed that the baseline model's heatmap retains a large amount of invalid texture and background information. Although the target activation region is complete, there is obvious "background activation overflow", and the activation boundary is relatively loose. On the contrary, thanks to the introduction of the CPCA module, the activation region in CPC-YOLO's heatmap is more compact, strictly fitting the core area of the targets. Background noise is effectively suppressed, resulting in a much "cleaner" activation response.
+
+<figure style="margin-bottom: 2em;">
+  <img src="https://raw.githubusercontent.com/yangguang-v/CPC-YOLO-Lightweight-Framework-for-Small-Ship-Detection-in-SAR-Images/main/Fig.Supp-3.png" alt="Fig.Supp-3" width="100%">
+  <figcaption style="margin-top: 0.5em;">Fig. Supp-3: Visual detection results and deep detection head heatmap comparison between the proposed CPC-YOLO method and the baseline network on LS-SSDD-v1.0. Note: Green boxes, blue boxes, and red boxes denote the ground truth, correctly detected targets, and missed targets, respectively. Yellow circles indicate false alarm targets.</figcaption>
+</figure>
+
+
+<figure style="margin-bottom: 2em;">
+  <img src="https://raw.githubusercontent.com/yangguang-v/CPC-YOLO-Lightweight-Framework-for-Small-Ship-Detection-in-SAR-Images/main/Fig.Supp-4.png" alt="Fig.Supp-4" width="100%">
+  <figcaption style="margin-top: 0.5em;">Fig. Supp-4: Visual comparison of heatmaps at Layer 10 (attention module) between the proposed CPC-YOLO method and the baseline network on LS-SSDD-v1.0.</figcaption>
+</figure>
+
+
+<figure style="margin-bottom: 2em;">
+  <img src="https://raw.githubusercontent.com/yangguang-v/CPC-YOLO-Lightweight-Framework-for-Small-Ship-Detection-in-SAR-Images/main/Fig.Supp-5.png" alt="Fig.Supp-5" width="100%">
+  <figcaption style="margin-top: 0.5em;">Fig. Supp-5: Visual detection results and deep detection head heatmap comparison between the proposed CPC-YOLO method and the baseline network on the SAR-Ship-Dataset. Red boxes denote missed detections, and yellow circles indicate false alarm targets.</figcaption>
+</figure>
+
+
+<figure style="margin-bottom: 2em;">
+  <img src="https://raw.githubusercontent.com/yangguang-v/CPC-YOLO-Lightweight-Framework-for-Small-Ship-Detection-in-SAR-Images/main/Fig.Supp-6.png" alt="Fig.Supp-6" width="100%">
+  <figcaption style="margin-top: 0.5em;">Fig. Supp-6: Visual comparison of heatmaps at Layer 10 (attention module) between the proposed CPC-YOLO method and the baseline network on the SAR-Ship-Dataset.</figcaption>
+</figure>
+
+Combined with the quantitative evaluation in the main text, the above visualization analysis fully demonstrates that CPC-YOLO possesses significant and distinct advantages in feature focusing, noise suppression, and the detection of small and dense targets in SAR images.
+
+## Supplementary references
+[S1] Z. Cui, Q. Li, Z. Cao, and N. Liu, “Dense attention pyramid networks for multi-scale ship detection in SAR images,” IEEE Trans. Geosci. Remote Sens., J., vol. 57, no. 11, pp. 8983-8997, Nov. 2019. 
+[S2] Q. Hu, S. Hu, and S. Liu, “BANet: A balance attention network for anchor-free ship detection in SAR images,” IEEE Tans. Geosci. Remote Sens., J., vol. 60, pp. 1-12, 2022.
+[S3] J. Fu, X. Sun, Z. Wang, and K. Fu, “An anchor-free method based on feature balancing and refinement network for multiscale ship detection in SAR images,” IEEE Trans. Geosci. Remote Sens., J., vol. 59, no. 2, pp. 1331-1344, Feb. 2021.
+[S4] S. Woo, J. Park, J. Lee, et al., “Cbam: Convolutional block attention module,” in Comput. Vis. (ECCV), pp. 3-19, 2018.
+[S5] L. Yang, R. Zhang, L Li, et al., “Simam: A simple, parameter-free attention module for convolution neural networks,” in International conference on machine learning. (PMLR) , pp. 11863-11874, 2021.
+[S6] Q. Hou, D. Zhou, J. Feng, “Coordinate attention for efficient mobile network design,” in Proc. IEEE Conf. Comput. Vis. Pattern Recognit. (CVPR), pp. 13713-13722, 2021.
+[S7] X. Cai, Q. Lai, Y. Wang, et al., “Poly kernel inception network for remote sensing detection,” in Proc. IEEE Conf. Comput. Vis. Pattern Recognit. (CVPR), pp. 27706-27716, 2024.
+[S8] D. Misra, T. Nalamada, A. Arasanipalai, et al., “Rotate to attend: Convolutional triplet attention module,” in Proc. IEEE/CVF winter conference on applications of computer vision. (WACV), pp. 116-131, 2018.
+[S9] P. T. Jiang, C. B. Zhang, Q. Hou, et al., “Layercam: Exploring hierarchical class activation maps for localization,” IEEE transactions on image processing, J., vol. 30, pp. 5875-5888, 2021.
