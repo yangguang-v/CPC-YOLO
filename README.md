@@ -16,7 +16,7 @@ where $q=e^{-P}, q\in (0,1], u(x)=3x \cdot e^{-x^2}$, and $u(\lambda q)$ is a no
 ### 1.2	Introduction of the Inner Mechanism and Final Expression of Inner-PIoUv2
 To further optimize the bounding box regression process, Inner-PIoUv2 (as shown in Fig. Supp-1) introduces a scale factor ($ratio$) on the basis of PIoUv2 to dynamically adjust the size of auxiliary bounding boxes. 
 
-<figure style="margin-bottom: 3em;">
+<figure style="margin-bottom: 2em;">
   <img src="https://raw.githubusercontent.com/yangguang-v/CPC-YOLO-Lightweight-Framework-for-Small-Ship-Detection-in-SAR-Images/main/Fig.Supp-1.png" alt="Fig.Supp-1" width="60%">
   <figcaption style="margin-top: 0.5em;">Fig.Supp-1 The representation of the Inner-PIoUv2 loss function. The area of the turquoise box represents the intersection between the target box and the anchor box, while the area of the orange box represents the intersection between the inner target box.</figcaption>
 </figure>
@@ -80,5 +80,11 @@ Our loss function introduces the non-monotonic attention function $u(x)=3x\cdot 
 ### 1.4	Dynamic Comparative Analysis of CIoU and Inner-PIoUv2 Loss Curves on Two Datasets
 To intuitively demonstrate the superiority of the proposed Inner-PIoUv2 loss function, we compare it with the baseline CIoU loss in terms of the bounding box regression loss (box loss) during training, with the results shown in Fig. Supp-2.
 
+<figure style="margin-bottom: 2em;">
+  <img src="https://raw.githubusercontent.com/yangguang-v/CPC-YOLO-Lightweight-Framework-for-Small-Ship-Detection-in-SAR-Images/main/Fig.Supp-1.png" alt="Fig.Supp-2" width="100%">
+  <figcaption style="margin-top: 0.5em;">Fig.Supp-2 Comparison of Box Regression Loss (CIoU vs. Inner-PIoUv2) on LS-SSDD-v1.0 and SAR-Ship-Datasets.</figcaption>
+</figure>
 
+When trained for 52 epochs on the large-scale SAR-Ship-Dataset (as shown in the right panel of Fig. Supp-2), compared with CIoU, Inner-PIoUv2 achieves a significantly faster initial convergence speed and maintains a consistently lower loss value throughout the entire training phase. For example, in the early training stage, the loss value of Inner-PIoUv2 drops rapidly to below 0.4481 at around 5 epochs, while CIoU still hovers around 0.686 in the same period; by the end of training, Inner-PIoUv2 further decreases to 0.32672 (lower than CIoU's lower than CIoU's 0.42667). This indicates that our method can provide effective gradient guidance and accelerate the optimization process in large-scale data scenarios.
 
+It is worth noting that when trained for 110 epochs on the more complex LS-SSDD-v1.0 dataset (as shown in the left panel of Fig. Supp-2), the loss value of Inner-PIoUv2 is slightly higher than that of CIoU with larger fluctuations (its loss value mainly oscillates dynamically between 0.23 and 0.31, while CIoU decreases smoothly to 0.2051). This phenomenon does not indicate poor optimization performance; on the contrary, it precisely reflects the core advantage of the proposed mechanism. By introducing auxiliary bounding boxes with a specific scale factor, Inner-PIoUv2 imposes stricter penalties on minor localization deviations (especially for small target ships). This rigorous optimization constraint can prevent the network from premature convergence, prompting the model to continuously refine and correct the bounding boxes. Therefore, despite the higher training loss value, a higher detection accuracy can be ultimately achieved (as shown in Table I in the main manuscript).
