@@ -25,4 +25,9 @@ $$\quad\quad\quad b_t=y_c-\frac{h \ast ratio}{2}, \quad b_b=y_c + \frac{h^\ast r
 
 where $b_l^{gt},b_r^{gt},b_t^{gt},b_b^{gt}$ denote the coordinates of the left, right, top, and bottom boundaries of the ground-truth box, respectively, and $b_l,b_r,b_t,b_b$ denote the coordinates of the left, right, top, and bottom boundaries of the anchor box, respectively. Based on the generated auxiliary bounding boxes, the calculation of the Inner Intersection over Union ($IoU^{inner}$) is defined as follows:
 
-$$ inner=\big(\min(b_r^{gt},b_r)-\max(b_l^{gt},b_l)\big)\cdot\big(\min( b_b^{gt},b_b)-\max(b_t^{gt},b_l)\big) \quad\quad {(8)}$$ 
+$$ inner=(\min(b_r^{gt},b_r)-\max(b_l^{gt},b_l))\cdot(\min( b_b^{gt},b_b)-\max(b_t^{gt},b_l)) \quad\quad {(8)}$$ 
+$$ union=(w^{gt}\cdot h^{gt})\cdot (ratio)^2 + (w\cdot h)\cdot (ratio)^2 -inner \quad\quad {(9)}$$ 
+$$ \quad\quad\quad\quad IoU^{inner}=\frac{inner}{union} \quad\quad\quad\quad {(10)} $$
+
+Here, $inner$ denotes the intersection area between the scaled auxiliary ground-truth box and the auxiliary anchor box after applying the scale factor, while $union$ denotes the union area of these two boxes.
+
