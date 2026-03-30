@@ -31,3 +31,7 @@ $$ \quad\quad\quad\quad IoU^{inner}=\frac{inner}{union} \quad\quad\quad\quad {(1
 
 Here, $inner$ denotes the intersection area between the scaled auxiliary ground-truth box and the auxiliary anchor box after applying the scale factor, while $union$ denotes the union area of these two boxes.
 
+The Inner-IoU loss inherits the partial characteristics of the IoU loss, and its value range remains [0,1]. By applying the Inner-IoU loss to the existing boundary regression loss function based on PIoUv2, the final Inner-PIoUv2 expressions can be obtained:
+
+$$ \quad\quad\quad\quad L_{Inner-IoU} = 1- IoU^{inner} \quad\quad\quad\quad {(11)} $$
+$$ \quad\quad\quad L_{Inner-IoU} = L_{Inner-PIoU} + 1-e^{-P^2} \quad\quad\quad{(12)} $$
