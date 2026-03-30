@@ -62,6 +62,7 @@ Table Supp-I Impact of Different   Values on Results on LS-SSDD-v1.0
 | 1.3   |87.20    |75.80  |83.56  | 35.80   | 81.10   |
 | 1.4   |85.17    |78.06  |85.29  | 35.85   | 81.46   |
 | 1.5   |86.38    |69.12  |83.38  | 36.08   | 76.79   |
+
 *Note: AP50 denotes mAP@0.5, AP denotes mAP@0.5:0.95.*
 
 
