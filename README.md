@@ -230,11 +230,19 @@ Combined with the quantitative evaluation in the main text, the above visualizat
 
 ## Supplementary references
 [S1] Z. Cui, Q. Li, Z. Cao, and N. Liu, “Dense attention pyramid networks for multi-scale ship detection in SAR images,” IEEE Trans. Geosci. Remote Sens., J., vol. 57, no. 11, pp. 8983-8997, Nov. 2019. 
+
 [S2] Q. Hu, S. Hu, and S. Liu, “BANet: A balance attention network for anchor-free ship detection in SAR images,” IEEE Tans. Geosci. Remote Sens., J., vol. 60, pp. 1-12, 2022.
+
 [S3] J. Fu, X. Sun, Z. Wang, and K. Fu, “An anchor-free method based on feature balancing and refinement network for multiscale ship detection in SAR images,” IEEE Trans. Geosci. Remote Sens., J., vol. 59, no. 2, pp. 1331-1344, Feb. 2021.
+
 [S4] S. Woo, J. Park, J. Lee, et al., “Cbam: Convolutional block attention module,” in Comput. Vis. (ECCV), pp. 3-19, 2018.
+
 [S5] L. Yang, R. Zhang, L Li, et al., “Simam: A simple, parameter-free attention module for convolution neural networks,” in International conference on machine learning. (PMLR) , pp. 11863-11874, 2021.
+
 [S6] Q. Hou, D. Zhou, J. Feng, “Coordinate attention for efficient mobile network design,” in Proc. IEEE Conf. Comput. Vis. Pattern Recognit. (CVPR), pp. 13713-13722, 2021.
+
 [S7] X. Cai, Q. Lai, Y. Wang, et al., “Poly kernel inception network for remote sensing detection,” in Proc. IEEE Conf. Comput. Vis. Pattern Recognit. (CVPR), pp. 27706-27716, 2024.
+
 [S8] D. Misra, T. Nalamada, A. Arasanipalai, et al., “Rotate to attend: Convolutional triplet attention module,” in Proc. IEEE/CVF winter conference on applications of computer vision. (WACV), pp. 116-131, 2018.
+
 [S9] P. T. Jiang, C. B. Zhang, Q. Hou, et al., “Layercam: Exploring hierarchical class activation maps for localization,” IEEE transactions on image processing, J., vol. 30, pp. 5875-5888, 2021.
