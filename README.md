@@ -95,9 +95,9 @@ To fully verify the superiority of the proposed Channel Prior Convolutional Atte
 TABLE Supp-III COMPARISON OF DIFFERENT ATTENTION MECHANISMS IN C2PSA ON LS-SSDD-v1.0
 |        | P(%)    | R(%)   | AP50(%)| AP(%)   | F1     |Params(M)| FLOPS(G)|
 |:-------|:-------:|-------:|:-------|:-------:|-------:|:-------:|-------:|
-| YOLOv11n*    |85.09 |75.90  |83.54 | 34.39   | 80.23   |1.8629 | 14.69|
-| CBAM[S4]     |84.88 |76.10  |84.29 | 34.97   | 80.07   |1.8138 | 14.48|
-| SimAM[S5]    |84.79 |75.80  |83.93 | 35.08   | 80.21   |1.8116 | 14.48|
+| YOLOv11n*    |85.09 |76.02  |83.52 | 34.28   | 80.34   |1.8629 | 14.69|
+| CBAM[S4]     |84.88 |75.78  |84.29 | 34.97   | 80.07   |1.8138 | 14.48|
+| SimAM[S5]    |84.79 |76.10  |83.93 | 35.08   | 80.21   |1.8116 | 14.48|
 | CoordAtt[S6] |85.47 |75.61  |84.76 | 35.10   | 80.80   |1.8149 | 14.78|
 | CAA[S7]      |85.52 |75.96  |84.49 | 35.39   | 80.47   |1.8479 | 14.53|
 | TripletAtt[S8]|85.78 |74.44 |83.21 | 34.17   | 79.71   |1.8119 | 14.48|
@@ -108,7 +108,7 @@ TABLE Supp-III COMPARISON OF DIFFERENT ATTENTION MECHANISMS IN C2PSA ON LS-SSDD-
 TABLE Supp-IV COMPARISON OF DIFFERENT ATTENTION MECHANISMS IN C2PSA ON SAR-Ship-Dataset
 |        | P(%)    | R(%)   | AP50(%)| AP(%)   | F1     |Params(M)| FLOPS(G)|
 |:-------|:-------:|-------:|:-------|:-------:|-------:|:-------:|-------:|
-| YOLOv11n*    |91.28 |91.21  |94.31 | 63.86   | 91.24   |1.8629 | 8.45|
+| YOLOv11n*    |91.18 |91.52  |94.31 | 63.72   | 91.35   |1.8629 | 8.45|
 | CBAM[S4]     |91.32 |92.25  |94.61 | 63.56   | 91.78   |1.8138 | 8.36|
 | SimAM[S5]    |92.01 |92.04  |94.67 | 63.82   | 92.02   |1.8116 | 8.36|
 | CoordAtt[S6] |91.57 |92.00  |94.41 | 63.52   | 91.78   |1.8149 | 8.36|
@@ -116,6 +116,34 @@ TABLE Supp-IV COMPARISON OF DIFFERENT ATTENTION MECHANISMS IN C2PSA ON SAR-Ship-
 | TripletAtt[S8]|90.93 |91.91 |94.82 | 62.94   | 91.42   |1.8119 | 8.37|
 | CPCA(Ours)   |91.36 |92.12  |94.41 | 63.89   | 91.74   |1.8403 | 8.40|
 
-Experimental results demonstrate that the proposed CPCA achieves the best overall detection performance. Specifically, CPCA attains the highest AP of 35.81% and 63.89% on the LS-SSDD-v1.0 and SAR-Ship-Dataset, respectively. In terms of model complexity, replacing the original multi-head self-attention mechanism in the baseline model (YOLOv11n*) with our CPCA module successfully reduces the parameter count from 1.86 M to 1.84 M, and also lowers the computational cost (GFLOPs). Although some ultra-lightweight mechanisms (such as SimAM and TripletAtt) require slightly fewer parameters (approximately 1.81 M), they exhibit a significant performance drop in AP metrics compared to CPCA.
+Experimental results demonstrate that the proposed CPCA achieves the best overall detection performance. Specifically, CPCA attains the highest AP of 35.85% and 63.89% on the LS-SSDD-v1.0 and SAR-Ship-Dataset, respectively. In terms of model complexity, replacing the original multi-head self-attention mechanism in the baseline model (YOLOv11n*) with our CPCA module successfully reduces the parameter count from 1.86 M to 1.84 M, and also lowers the computational cost (GFLOPs). Although some ultra-lightweight mechanisms (such as SimAM and TripletAtt) require slightly fewer parameters (approximately 1.81 M), they exhibit a significant performance drop in AP metrics compared to CPCA.
 
 In conclusion, CPCA achieves the optimal balance between computational efficiency and feature extraction capability. It demonstrates excellent ability to suppress complex SAR speckle noise and accurately capture the spatial and channel features of tiny ships, making it the most suitable attention mechanism for this architecture.
+
+## Supplementary Experiments in Different Scenarios on LS-SSDD-v1.0
+To fully verify the scene generalization ability of the proposed method, we conducted a detailed comparative analysis of CPC-YOLO with mainstream general-purpose object detection algorithms and SAR image-specific detection algorithms (such as DADP[S1], BANet[S2], and FBRNet[S3]) in inshore and offshore scenarios in the supplementary material (Table Supp-V and Table Supp-VI). Since the official LS-SSDD-v1.0 dataset provides txt documents with inshore and offshore ship annotations, while the SAR-Ship-Dataset does not offer inshore/offshore SAR image classification, the experimental verification is only performed on LS-SSDD-v1.0.
+
+Table Supp-V COMPARISON RESULTS OF DIFFERENT SHIP DETECTION METHODS IN VARIOUS SCENES OF LS-SSDD-v1.0
+<table>
+  <thead>
+    <tr>
+      <th rowspan="2">Method</th>
+      <th colspan="5">Inshore Scenes (%)</th>
+      <th colspan="5">Offshore Scenes (%)</th>
+    </tr>
+    <tr>
+      <th>P↓</th><th>R↓</th><th>AP50↑</th><th>AP↑</th><th>F1↑</th>
+      <th>P↓</th><th>R↓</th><th>AP50↑</th><th>AP↑</th><th>F1↑</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>RetinaNet</td><td>26.5↑</td><td>91.03↑</td><td>30.55↑</td><td>10.24↑</td><td>41.05↑</td><td>84.40↑</td><td>85.32↑</td><td>88.97↑</td><td>34.03↑</td><td>84.86↑</td></tr>
+    <tr><td>Cascade R-CNN</td><td>52.3↑</td><td>51.41↑</td><td>45.2↑</td><td>12.00↑</td><td>51.85↑</td><td>83.1↑</td><td>93.49↑</td><td>92.11↑</td><td>36.40↑</td><td>87.99↑</td></tr>
+    <tr><td>Improved-FCOS</td><td>60.6↑</td><td>60.10↑</td><td>54.16↑</td><td>-</td><td></td><td>89.20↑</td><td>94.41↑</td><td>92.84↑</td><td>-</td><td>91.73↑</td></tr>
+    <tr><td>YOLOv10n</td><td>61.53↑</td><td>36.14↑</td><td>47.71↑</td><td>20.58↑</td><td>45.53↑</td><td>86.78↑</td><td>80.03↑</td><td>89.02↑</td><td>39.79↑</td><td>83.27↑</td></tr>
+    <tr><td>YOLOv12n</td><td>69.42↑</td><td>41.58↑</td><td>55.02↑</td><td>24.86↑</td><td>52.00↑</td><td>92.63↑</td><td>89.17↑</td><td>93.83↑</td><td>41.78↑</td><td>90.87↑</td></tr>
+    <tr><td>YOLOv11n</td><td>66.71↑</td><td>37.03↑</td><td>53.62↑</td><td>24.21↑</td><td>47.62↑</td><td>91.15↑</td><td>88.86↑</td><td>92.76↑</td><td>41.27↑</td><td>90.02↑</td></tr>
+    <tr><td>CPC-YOLO (Ours)</td><td>68.97↑</td><td>39.13↑</td><td>54.47↑</td><td>24.79↑</td><td>49.93↑</td><td>91.35↑</td><td>89.44↑</td><td>93.47↑</td><td>42.34↑</td><td>90.38↑</td></tr>
+  </tbody>
+</table>
+
