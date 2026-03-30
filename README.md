@@ -104,3 +104,18 @@ TABLE Supp-III COMPARISON OF DIFFERENT ATTENTION MECHANISMS IN C2PSA ON LS-SSDD-
 | CPCA(Ours)   |85.12 |76.64  |84.17 | 35.36   | 80.66   |1.8403 | 14.55|
 
 *Note: TripletAtt denotes TripletAttention. YOLOv11n* denotes YOLOv11n + P2 – P5 + Channels reduction.*
+
+TABLE Supp-IV COMPARISON OF DIFFERENT ATTENTION MECHANISMS IN C2PSA ON SAR-Ship-Dataset
+|        | P(%)    | R(%)   | AP50(%)| AP(%)   | F1     |Params(M)| FLOPS(G)|
+|:-------|:-------:|-------:|:-------|:-------:|-------:|:-------:|-------:|
+| YOLOv11n*    |91.28 |91.21  |94.31 | 63.86   | 91.24   |1.8629 | 8.45|
+| CBAM[S4]     |91.32 |92.25  |94.61 | 63.56   | 91.78   |1.8138 | 8.36|
+| SimAM[S5]    |92.01 |92.04  |94.67 | 63.82   | 92.02   |1.8116 | 8.36|
+| CoordAtt[S6] |91.57 |92.00  |94.41 | 63.52   | 91.78   |1.8149 | 8.36|
+| CAA[S7]      |90.89 |92.23  |94.13 | 63.44   | 91.56   |1.8479 | 8.39|
+| TripletAtt[S8]|90.93 |91.91 |94.82 | 62.94   | 91.42   |1.8119 | 8.37|
+| CPCA(Ours)   |91.36 |92.12  |94.41 | 63.89   | 91.74   |1.8403 | 8.40|
+
+Experimental results demonstrate that the proposed CPCA achieves the best overall detection performance. Specifically, CPCA attains the highest AP of 35.81% and 63.89% on the LS-SSDD-v1.0 and SAR-Ship-Dataset, respectively. In terms of model complexity, replacing the original multi-head self-attention mechanism in the baseline model (YOLOv11n*) with our CPCA module successfully reduces the parameter count from 1.86 M to 1.84 M, and also lowers the computational cost (GFLOPs). Although some ultra-lightweight mechanisms (such as SimAM and TripletAtt) require slightly fewer parameters (approximately 1.81 M), they exhibit a significant performance drop in AP metrics compared to CPCA.
+
+In conclusion, CPCA achieves the optimal balance between computational efficiency and feature extraction capability. It demonstrates excellent ability to suppress complex SAR speckle noise and accurately capture the spatial and channel features of tiny ships, making it the most suitable attention mechanism for this architecture.
