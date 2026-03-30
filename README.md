@@ -88,3 +88,18 @@ To intuitively demonstrate the superiority of the proposed Inner-PIoUv2 loss fun
 When trained for 52 epochs on the large-scale SAR-Ship-Dataset (as shown in the right panel of Fig. Supp-2), compared with CIoU, Inner-PIoUv2 achieves a significantly faster initial convergence speed and maintains a consistently lower loss value throughout the entire training phase. For example, in the early training stage, the loss value of Inner-PIoUv2 drops rapidly to below 0.4481 at around 5 epochs, while CIoU still hovers around 0.686 in the same period; by the end of training, Inner-PIoUv2 further decreases to 0.32672 (lower than CIoU's lower than CIoU's 0.42667). This indicates that our method can provide effective gradient guidance and accelerate the optimization process in large-scale data scenarios.
 
 It is worth noting that when trained for 110 epochs on the more complex LS-SSDD-v1.0 dataset (as shown in the left panel of Fig. Supp-2), the loss value of Inner-PIoUv2 is slightly higher than that of CIoU with larger fluctuations (its loss value mainly oscillates dynamically between 0.23 and 0.31, while CIoU decreases smoothly to 0.2051). This phenomenon does not indicate poor optimization performance; on the contrary, it precisely reflects the core advantage of the proposed mechanism. By introducing auxiliary bounding boxes with a specific scale factor, Inner-PIoUv2 imposes stricter penalties on minor localization deviations (especially for small target ships). This rigorous optimization constraint can prevent the network from premature convergence, prompting the model to continuously refine and correct the bounding boxes. Therefore, despite the higher training loss value, a higher detection accuracy can be ultimately achieved (as shown in Table I in the main manuscript).
+
+## 2 Comparative Experimental Analysis of Different Attention Mechanisms
+To fully verify the superiority of the proposed Channel Prior Convolutional Attention (CPCA), we conducted replacement comparison experiments by substituting it with five mainstream attention mechanisms (CBAM, SimAM, CoordAtt, CAA, and TripletAtt) in the C2PSA module. The experimental results on the two datasets are shown in Table Supp-III and Table Supp-IV, respectively.
+
+TABLE Supp-III COMPARISON OF DIFFERENT ATTENTION MECHANISMS IN C2PSA ON LS-SSDD-v1.0
+|       | P(%) | R(%) | AP50(%) | AP(%) | F1 | Params(M) | FLOPS(G)|
+|:-------|:-------:|-------:|:-------|:-------:|-------:|
+| YOLOv11n*    |85.09 |75.90  |83.54 | 34.39   | 80.23   |1.8629 | 14.69|
+| CBAM[31]     |84.88 |76.10  |84.29 | 34.97   | 80.07   |1.8138 | 14.48|
+| SimAM[32]    |84.79 |75.80  |83.93 | 35.08   | 80.21   |1.8116 | 14.48|
+| CoordAtt[33] |85.47 |85.52  |75.96 | 35.10   | <b>81.46</b> |
+| 1.5   |86.38    |69.12  |83.38  | <b>36.08</b>   | 76.79   |
+
+*Note: AP50 denotes mAP@0.5, AP denotes mAP@0.5:0.95.*
+*Note: AP50 denotes mAP@0.5, AP denotes mAP@0.5:0.95.*
