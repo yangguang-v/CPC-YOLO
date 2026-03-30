@@ -93,13 +93,14 @@ It is worth noting that when trained for 110 epochs on the more complex LS-SSDD-
 To fully verify the superiority of the proposed Channel Prior Convolutional Attention (CPCA), we conducted replacement comparison experiments by substituting it with five mainstream attention mechanisms (CBAM, SimAM, CoordAtt, CAA, and TripletAtt) in the C2PSA module. The experimental results on the two datasets are shown in Table Supp-III and Table Supp-IV, respectively.
 
 TABLE Supp-III COMPARISON OF DIFFERENT ATTENTION MECHANISMS IN C2PSA ON LS-SSDD-v1.0
-|       | P(%) | R(%) | AP50(%) | AP(%) | F1 | Params(M) | FLOPS(G)|
-|:-------|:-------:|-------:|:-------|:-------:|-------:|
+|        | P(%)    | R(%)   | AP50(%)| AP(%)   | F1     |Params(M)| FLOPS(G)|
+|:-------|:-------:|-------:|:-------|:-------:|-------:|:-------:|-------:|
 | YOLOv11n*    |85.09 |75.90  |83.54 | 34.39   | 80.23   |1.8629 | 14.69|
-| CBAM[31]     |84.88 |76.10  |84.29 | 34.97   | 80.07   |1.8138 | 14.48|
-| SimAM[32]    |84.79 |75.80  |83.93 | 35.08   | 80.21   |1.8116 | 14.48|
-| CoordAtt[33] |85.47 |85.52  |75.96 | 35.10   | <b>81.46</b> |
-| 1.5   |86.38    |69.12  |83.38  | <b>36.08</b>   | 76.79   |
+| CBAM[S4]     |84.88 |76.10  |84.29 | 34.97   | 80.07   |1.8138 | 14.48|
+| SimAM[S5]    |84.79 |75.80  |83.93 | 35.08   | 80.21   |1.8116 | 14.48|
+| CoordAtt[S6] |85.47 |75.61  |84.76 | 35.10   | 80.80   |1.8149 | 14.78|
+| CAA[S7]      |85.52 |75.96  |84.49 | 35.39   | 80.47   |1.8479 | 14.53|
+| TripletAtt[S8]|85.78 |74.44 |83.21 | 34.17   | 79.71   |1.8119 | 14.48|
+| CPCA(Ours)   |85.12 |76.64  |84.17 | 35.36   | 80.66   |1.8403 | 14.55|
 
-*Note: AP50 denotes mAP@0.5, AP denotes mAP@0.5:0.95.*
-*Note: AP50 denotes mAP@0.5, AP denotes mAP@0.5:0.95.*
+*Note: TripletAtt denotes TripletAttention. YOLOv11n* denotes YOLOv11n + P2 – P5 + Channels reduction.*
