@@ -18,14 +18,11 @@ To further optimize the bounding box regression process, Inner-PIoUv2 (as shown 
 
 
 <figure>
-  <img src="[./images/doge.png](https://github.com/yangguang-v/CPC-YOLO-Lightweight-Framework-for-Small-Ship-Detection-in-SAR-Images/blob/main/Fig.Supp-1.png)" alt="doge" width="60%">
-  <figcaption>Fig. Supp-1 The representation of the Inner-PIoUv2 loss function. The area of the turquoise box represents the intersection between the target box and the anchor box, while the area of the orange box represents the intersection between the inner target box.</figcaption>
+  <img src="[./images/doge.png](https://github.com/yangguang-v/CPC-YOLO-Lightweight-Framework-for-Small-Ship-Detection-in-SAR-Images/blob/main/Fig.Supp-1.png)" alt="Fig.Supp-1" width="60%">
+  <figcaption>Fig.Supp-1 The representation of the Inner-PIoUv2 loss function. The area of the turquoise box represents the intersection between the target box and the anchor box, while the area of the orange box represents the intersection between the inner target box.</figcaption>
 </figure> 
 
-<figure style="text-align:center;">
-  <img src="[https://github.com/yangguang-v/CPC-YOLO-Lightweight-Framework-for-Small-Ship-Detection-in-SAR-Images/blob/main/Fig.Supp-1.png]" style="width:80%;" />
-  <figcaption>Fig. Supp-1 The representation of the Inner-PIoUv2 loss function. The area of the turquoise box represents the intersection between the target box and the anchor box, while the area of the orange box represents the intersection between the inner target box.</figcaption>
-</figure>
+
 
 
 Let the center coordinates of the ground-truth box $B^{gt}$ and the anchor box $B$ be $(x_c^{gt}, y_c^{gt})$ and $(x_c,y_c)$, respectively, and their widths and heights be $(w^{gt},h^{gt})$ and $(w,h)$, respectively. With the scale factor $ratio$ (usually ranging from 0.5 to 1.5, and the optimal value in this paper is 1.4), the coordinates of the auxiliary bounding boxes are calculated as follows:
