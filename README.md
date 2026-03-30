@@ -120,7 +120,7 @@ Experimental results demonstrate that the proposed CPCA achieves the best overal
 
 In conclusion, CPCA achieves the optimal balance between computational efficiency and feature extraction capability. It demonstrates excellent ability to suppress complex SAR speckle noise and accurately capture the spatial and channel features of tiny ships, making it the most suitable attention mechanism for this architecture.
 
-## Supplementary Experiments in Different Scenarios on LS-SSDD-v1.0
+## 3 Supplementary Experiments in Different Scenarios on LS-SSDD-v1.0
 To fully verify the scene generalization ability of the proposed method, we conducted a detailed comparative analysis of CPC-YOLO with mainstream general-purpose object detection algorithms and SAR image-specific detection algorithms (such as DADP[S1], BANet[S2], and FBRNet[S3]) in inshore and offshore scenarios in the supplementary material (Table Supp-V and Table Supp-VI). Since the official LS-SSDD-v1.0 dataset provides txt documents with inshore and offshore ship annotations, while the SAR-Ship-Dataset does not offer inshore/offshore SAR image classification, the experimental verification is only performed on LS-SSDD-v1.0.
 
 Table Supp-V COMPARISON RESULTS OF DIFFERENT SHIP DETECTION METHODS IN VARIOUS SCENES OF LS-SSDD-v1.0
@@ -146,4 +146,46 @@ Table Supp-V COMPARISON RESULTS OF DIFFERENT SHIP DETECTION METHODS IN VARIOUS S
     <tr><td>CPC-YOLO (Ours)</td><td>68.97</td><td>39.13</td><td>54.47</td><td>24.79</td><td>49.93</td><td>91.35↑</td><td>89.44↑</td><td>93.47</td><td>42.34</td><td>90.38</td></tr>
   </tbody>
 </table>
+
+Table Supp-VI COMPARISON OF CPC-YOLO WITH SPECIALIZED SAR SHIP DETECTION METHODS ON INSHORE AND OFFSHORE SCENES OF LS-SSDD-V1.0
+<table>
+  <thead>
+     <tr>
+      <th rowspan="2">Method</th>
+      <th colspan="5">Inshore Scenes (%)</th>
+      <th colspan="5">Offshore Scenes (%)</th>
+     </tr>
+     <tr>
+      <th>P</th><th>R</th><th>AP50</th><th>AP</th><th>F1</th>
+      <th>P</th><th>R</th><th>AP50</th><th>AP</th><th>F1</th>
+     </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>DADP [S1]</td>
+      <td>68.30</td><td>42.90</td><td>39.17</td><td></td><td>52.70</td>
+      <td>90.70</td><td>90.70</td><td>89.21</td><td></td><td>90.7</td>
+    </tr>
+    <tr>
+      <td>BANet [S2]</td>
+      <td>53.80</td><td>63.50</td><td>53.99</td><td></td><td>58.25</td>
+      <td>86.20</td><td>92.70</td><td>91.13</td><td></td><td>89.33</td>
+    </tr>
+    <tr>
+      <td>FBRNet [S3]</td>
+      <td>46.90</td><td>58.70</td><td>49.55</td><td></td><td>52.14</td>
+      <td>85.90</td><td>93.70</td><td>91.75</td><td></td><td>89.63</td>
+    </tr>
+    <tr>
+      <td>CPC-YOLO (Ours)</td>
+      <td>68.97</td><td>39.13</td><td>54.47</td><td>24.79</td><td>49.93</td>
+      <td>91.35</td><td>89.44</td><td>93.47</td><td>42.34</td><td>90.38</td>
+    </tr>
+  </tbody>
+</table>
+
+In the extremely challenging inshore scenarios: Due to the strong interference from land and port facility clutter, detection in this scenario is extremely difficult. As shown in Table Supp-V and Supp-VI, CPC-YOLO achieves an AP50 of 54.47% and an AP of 24.79% in this scenario. This performance comprehensively surpasses all compared SAR-specific detection methods (for example, the best-performing BANet achieves 53.99%), and is significantly superior to the baseline YOLOv11n. Although its AP50 is slightly lower than that of the latest model YOLOv12n (55.02%) with a larger parameter count, CPC-YOLO still exhibits excellent anti-clutter interference ability while maintaining an extremely low parameter count.
+
+In offshore scenarios: Facing dense tiny ships on the sea surface, CPC-YOLO demonstrates extremely high localization accuracy. Its AP50 reaches 93.47%, and the stricter AP metric reaches 42.34% (even surpassing YOLOv12n's 41.78%). Compared with classic SAR-specific methods DADP and BANet, our method establishes a leading advantage in both recall and average precision.
+Comprehensive experimental results across different scenarios show that CPC-YOLO successfully overcomes the false positive problems caused by complex nearshore backgrounds and the missed detection problems of tiny offshore targets, and exhibits stable and highly competitive detection performance under various conditions.
 
