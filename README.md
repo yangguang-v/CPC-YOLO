@@ -81,7 +81,7 @@ Our loss function introduces the non-monotonic attention function $u(x)=3x\cdot 
 To intuitively demonstrate the superiority of the proposed Inner-PIoUv2 loss function, we compare it with the baseline CIoU loss in terms of the bounding box regression loss (box loss) during training, with the results shown in Fig. Supp-2.
 
 <figure style="margin-bottom: 2em;">
-  <img src="https://raw.githubusercontent.com/yangguang-v/CPC-YOLO-Lightweight-Framework-for-Small-Ship-Detection-in-SAR-Images/main/Fig.Supp-1.png" alt="Fig.Supp-2" width="100%">
+  <img src="https://raw.githubusercontent.com/yangguang-v/CPC-YOLO-Lightweight-Framework-for-Small-Ship-Detection-in-SAR-Images/main/Fig.Supp-2.png" alt="Fig.Supp-2" width="100%">
   <figcaption style="margin-top: 0.5em;">Fig.Supp-2 Comparison of Box Regression Loss (CIoU vs. Inner-PIoUv2) on LS-SSDD-v1.0 and SAR-Ship-Datasets.</figcaption>
 </figure>
 
