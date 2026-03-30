@@ -60,8 +60,8 @@ Table Supp-I Impact of Different   Values on Results on LS-SSDD-v1.0
 | 1.1   |87.38    |74.25  |84.30   | 35.98   | 80.28   |
 | 1.2   |87.26    |77.44  |83.82  | 36.09   | 79.78   |
 | 1.3   |87.20    |75.80  |83.56  | 35.80   | 81.10   |
-| <strong>1.4</strong>  |<td><b>85.17</b></td>    |78.06  |85.29  | 35.85   | 81.46   |
-| 1.5   |86.38    |69.12  |83.38  | 36.08   | 76.79   |
+| <strong>1.4</strong> |<b>85.17</b> |<b>78.06</b> |<b>85.29</b> | 35.85   | <b>81.46</b> |
+| 1.5   |86.38    |69.12  |83.38  | <b>36.08</b>   | 76.79   |
 
 *Note: AP50 denotes mAP@0.5, AP denotes mAP@0.5:0.95.*
 
@@ -71,7 +71,14 @@ Table Supp-II Impact of Different   Values on Results on SAR-Ship-Dataset
 | 1.1   |91.38    |91.99  |94.21   | 63.92   | 91.68  |
 | 1.2   |91.19   |91.79  |94.41  | 64.36   | 91.49   |
 | 1.3   |91.42    |92.13  |94.36  | 64.29   | 91.77   |
-| 1.4   |91.76    |92.53  |94.72  | 64.41   | 92.14   |
+| <strong>1.4</strong>  |<b>91.76</b>    |<b>92.53</b>  |<b>94.72</b> | <b>64.41</b>   | <b>92.14</b>   |
 | 1.5   |91.88    |90.99  |94.08  | 63.73   | 91.43   |
+
+(2) Dynamic Focus During Training (Based on the Attention Function)
+Our loss function introduces the non-monotonic attention function $u(x)=3x\cdot e^{-x^2}$. During training, this function dynamically adjusts the weight allocation of each predicted box in the total loss based on its real-time localization quality (the value of $q$). This mechanism effectively suppresses the harmful gradients from low-quality samples (outliers), and allows the model to dynamically focus on the "medium-quality samples" with the greatest optimization potential, thereby accelerating convergence and raising the final localization upper bound.
+
+### 1.4	Dynamic Comparative Analysis of CIoU and Inner-PIoUv2 Loss Curves on Two Datasets
+To intuitively demonstrate the superiority of the proposed Inner-PIoUv2 loss function, we compare it with the baseline CIoU loss in terms of the bounding box regression loss (box loss) during training, with the results shown in Fig. Supp-2.
+
 
 
