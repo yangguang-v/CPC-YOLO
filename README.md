@@ -54,8 +54,14 @@ We construct auxiliary bounding boxes using the adjustable scale factor $ratio$.
 
 As shown in the ablation studies in Table Supp-I and Table Supp-II, we explore the detection results for $ratio\in [1.1, 1.5]$. When $ratio=1.4$, the model achieves the optimal dynamic balance between small objects detection penalty and overall regression stability, resulting in the best average precision and F1-score on both the LS-SSDD-v1.0 and SAR-Ship-Dataset datasets.
 
+Table Supp-I Impact of Different   Values on Results on LS-SSDD-v1.0
+| Ratio | P(%) | R(%) | AP50(%) | AP(%) | F1 |
+|:-------|:-------:|-------:|:-------|:-------:|-------:|
+| 1.1   |87.38    |74.25  |84.30   | 35.98   | 80.28   |
+| 1.2   |87.26    |77.44  |83.82  | 36.09   | 79.78   |
+| 1.3   |87.20    |75.80  |83.56  | 35.80   | 81.10   |
+| 1.4   |85.17    |78.06  |85.29  | 35.85   | 81.46   |
+| 1.5   |86.38    |69.12  |83.38  | 36.08   | 76.79   |
+Note: AP50 denotes mAP@0.5, AP denotes mAP@0.5:0.95.
 
-| Ratio | P(%) | R(%) |
-|:-------|:-------:|-------:|
-| 文本   | 文本    | 文本   |
-| 长文本示例 | 长文本示例 | 长文本示例 |
+
