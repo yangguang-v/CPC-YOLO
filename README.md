@@ -38,3 +38,14 @@ $$ \quad\quad\quad L_{Inner-IoU} = L_{Inner-PIoU} + 1-e^{-P^2} \quad\quad\quad{(
 $$L_{Inner-PIoUv2}=u(\lambda q)\cdot L_{Inner-PIoU} = 3\cdot (\lambda q)\cdot e^{-(\lambda q)^2} \cdot L_{Inner-PIoU} {(13)} $$
 
 where $u(\lambda q)$ represents the attention function, $q=e^{-P},q\in(0,1]$, which is used to measure the quality of the anchor box. When $q=1$, it implies $P=0$, meaning the anchor box is perfectly aligned with the target box. As $P$ increases, $q$ decreases gradually, indicating a lower quality of the anchor box. $\lambda$ is a hyperparameter that controls the behavior of the attention function.
+
+### 1.3	In-Depth Analysis of the Dynamic Mechanism of Inner-PIoUv2 and Ablation Studies on the Scale Factor
+The dynamic adjustment mechanism of the proposed Inner-PIoUv2 loss function is the core of its superior performance in complex scenarios. This dynamic property is mainly reflected in the following two dimensions:
+(1) Structural Dynamic Adaptation (Based on the Scale Factor $ratio$)
+
+We construct auxiliary bounding boxes using the adjustable scale factor $ratio$. Although $ratio$ is a preset hyperparameter during a single training run, different values of ratio enable the loss function to dynamically adapt to regression samples of varying quality and size.
+(a) When $ratio > 1$: The auxiliary bounding boxes are larger than the original ones. This amplifies the weight of position deviations in the loss calculation, forcing the model to perform rigorous optimization for even minor center-point offsets. This high-intensity spatial penalty is particularly beneficial for the accurate localization of small target ships.
+(b) When $ratio < 1$: The auxiliary bounding boxes are smaller than the original ones. This relatively relaxes the requirement for absolute center-point precision, instead focusing more on the overall intersection area of the boxes, which is more effective for the detection of medium and large targets.
+
+As shown in the ablation studies in Table Supp-I and Table Supp-II, we explore the detection results for $ratio\in [1.1, 1.5]$. When $ratio=1.4$, the model achieves the optimal dynamic balance between small objects detection penalty and overall regression stability, resulting in the best average precision and F1-score on both the LS-SSDD-v1.0 and SAR-Ship-Dataset datasets.
+
