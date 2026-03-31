@@ -115,6 +115,8 @@ TABLE IV THE ABLATION EXPERIMENT ON SAR-SHIP-DATASET OF THE ENTIRE SCENES
 | 6 CPC-YOLO (Ours) | 91.76 | 92.53 | 94.72 | 64.41 | 92.14 | 1.8403 | 8.40 |
 | 7 (Only Add CPCA) | 91.45 | 91.31 | 94.14 | 63.03 | 91.38 | 2.5674 | 5.70 |
 | 8 (Only Add Inner-PIoUv2) | 91.51 | 92.05 | 94.49 | 63.47 | 91.78 | 2.5900 | 5.75 |
+
+
 (1) On the standalone addition of CPCA (Tables III and IV, Line 7):
 Although experiments have proven that the final architecture of "Adjusted Feature Map Scale (Add P2, Remove P5) + CPCA + Inner-PIoUv2" achieves the optimal performance, we need to rule out the possibility that the performance improvement is solely attributed to the introduction of high-resolution feature maps. By only adding the CPCA module to the baseline YOLOv11n, we observe that without changing the macroscopic network structure, the model's Precision is significantly improved, and the parameter count is slightly optimized. This fully confirms the independent effectiveness of the CPCA module in feature extraction, and demonstrates its synergistic enhancement effect with multi-scale structure adjustment.
 (2) On the standalone addition of Inner-PIoUv2 (Tables III and IV, Line 8):
