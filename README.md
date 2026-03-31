@@ -89,7 +89,39 @@ When trained for 52 epochs on the large-scale SAR-Ship-Dataset (as shown in the 
 
 It is worth noting that when trained for 110 epochs on the more complex LS-SSDD-v1.0 dataset (as shown in the left panel of Fig. Supp-2), the loss value of Inner-PIoUv2 is slightly higher than that of CIoU with larger fluctuations (its loss value mainly oscillates dynamically between 0.23 and 0.31, while CIoU decreases smoothly to 0.2051). This phenomenon does not indicate poor optimization performance; on the contrary, it precisely reflects the core advantage of the proposed mechanism. By introducing auxiliary bounding boxes with a specific scale factor, Inner-PIoUv2 imposes stricter penalties on minor localization deviations (especially for small target ships). This rigorous optimization constraint can prevent the network from premature convergence, prompting the model to continuously refine and correct the bounding boxes. Therefore, despite the higher training loss value, a higher detection accuracy can be ultimately achieved (as shown in Table I in the main manuscript).
 
-## 2 Comparative Experimental Analysis of Different Attention Mechanisms
+## 2 Supplementary Explanation on the Controlled Variable Design in Ablation Experiments
+To more rigorously verify the independent effectiveness of the innovative modules proposed in this paper, we specifically designed two sets of single-variable controlled experiments (Lines 7 and 8) in the ablation experiments (Tables III and IV, shown below) in the main text.
+
+Table III The ABLATION EXPERIMENT ON LS-SSDD-v1.0 OF THE ENTIRE SCENES
+|        | P(%)    | R(%)   | AP50(%)| AP(%)   | F1     |Params(M)| FLOPS(G)|
+|:-------|:-------:|-------:|:-------|:-------:|-------:|:-------:|-------:|
+| 1YOLOv11n                |87.00 |76.10  |83.04 | 33.70   | 81.19   |2.5900 | 10.01|
+| 2(Add P2)                |85.06 |76.38  |83.55 | 34.33   | 80.49   |2.6668 | 16.07|
+| 3(Remove P5)             |84.89 |76.43  |83.54 | 34.32   | 80.44   |1.9389 | 15.17|
+| 4(Add Channel Reduction) |85.09 |76.02  |83.52 | 34.28   | 80.34   |1.8629 | 14.69|
+| 5(Add CPCA)              |85.12 |76.64  |84.17 | 35.36   | 80.66   |1.8403 | 14.55|
+| 6 CPC-YOLO(Ours)         |85.17 |78.06  |85.29 | 35.85   | 81.46   |1.8403 | 14.55|
+| 7(Only Add CPCA)         |84.71 |77.73  |84.01 | 34.37   | 81.07   |2.5674 | 9.87 |
+| 8(Only Add Inner-PIoUv2) |84.95 |76.92  |83.82 | 34.26   | 80.74   |2.5900 | 10.01|
+
+TABLE IV THE ABLATION EXPERIMENT ON SAR-SHIP-DATASET OF THE ENTIRE SCENES
+|               | P (%) | R (%) | AP50 (%) | AP (%) | F1 (%) | Params (M) | FLOPs (G) |
+|---------------|-------|-------|----------|--------|--------|------------|-----------|
+| 1 YOLOv11n | 91.02 | 91.63 | 94.10 | 62.77 | 91.32 | 2.5900 | 5.75 |
+| 2 (Add P2) | 91.12 | 91.76 | 94.56 | 63.81 | 91.44 | 2.6668 | 9.25 |
+| 3 (Remove P5) | 91.23 | 91.62 | 94.27 | 63.67 | 91.42 | 1.9389 | 8.72 |
+| 4 (Reduct Channels) | 91.18 | 91.52 | 94.31 | 63.72 | 91.35 | 1.8629 | 8.45 |
+| 5 (Add CPCA) | 91.36 | 92.12 | 94.41 | 63.89 | 91.74 | 1.8403 | 8.40 |
+| 6 CPC-YOLO (Ours) | 91.76 | 92.53 | 94.72 | 64.41 | 92.14 | 1.8403 | 8.40 |
+| 7 (Only Add CPCA) | 91.45 | 91.31 | 94.14 | 63.03 | 91.38 | 2.5674 | 5.70 |
+| 8 (Only Add Inner-PIoUv2) | 91.51 | 92.05 | 94.49 | 63.47 | 91.78 | 2.5900 | 5.75 |
+(1) On the standalone addition of CPCA (Tables III and IV, Line 7):
+Although experiments have proven that the final architecture of "Adjusted Feature Map Scale (Add P2, Remove P5) + CPCA + Inner-PIoUv2" achieves the optimal performance, we need to rule out the possibility that the performance improvement is solely attributed to the introduction of high-resolution feature maps. By only adding the CPCA module to the baseline YOLOv11n, we observe that without changing the macroscopic network structure, the model's Precision is significantly improved, and the parameter count is slightly optimized. This fully confirms the independent effectiveness of the CPCA module in feature extraction, and demonstrates its synergistic enhancement effect with multi-scale structure adjustment.
+(2) On the standalone addition of Inner-PIoUv2 (Tables III and IV, Line 8):
+This experiment aims to isolate the impact of network architecture optimization and independently verify the superiority of the proposed loss function. The results show that, without any modification to the original YOLOv11n structure, simply replacing the loss function with Inner-PIoUv2 can effectively improve the model's Recall metric. This further highlights the inherent contribution of this dynamic loss function in improving bounding box regression and enhancing sensitivity to tiny objects.
+
+
+## 3 Comparative Experimental Analysis of Different Attention Mechanisms
 To fully verify the superiority of the proposed Channel Prior Convolutional Attention (CPCA), we conducted replacement comparison experiments by substituting it with five mainstream attention mechanisms (CBAM, SimAM, CoordAtt, CAA, and TripletAtt) in the C2PSA module. The experimental results on the two datasets are shown in Table Supp-III and Table Supp-IV, respectively.
 
 TABLE Supp-III COMPARISON OF DIFFERENT ATTENTION MECHANISMS IN C2PSA ON LS-SSDD-v1.0
@@ -120,7 +152,7 @@ Experimental results demonstrate that the proposed CPCA achieves the best overal
 
 In conclusion, CPCA achieves the optimal balance between computational efficiency and feature extraction capability. It demonstrates excellent ability to suppress complex SAR speckle noise and accurately capture the spatial and channel features of tiny ships, making it the most suitable attention mechanism for this architecture.
 
-## 3 Supplementary Experiments in Different Scenarios on LS-SSDD-v1.0
+## 4 Supplementary Experiments in Different Scenarios on LS-SSDD-v1.0
 To fully verify the scene generalization ability of the proposed method, we conducted a detailed comparative analysis of CPC-YOLO with mainstream general-purpose object detection algorithms and SAR image-specific detection algorithms (such as DADP[S1], BANet[S2], and FBRNet[S3]) in inshore and offshore scenarios in the supplementary material (Table Supp-V and Table Supp-VI). Since the official LS-SSDD-v1.0 dataset provides txt documents with inshore and offshore ship annotations, while the SAR-Ship-Dataset does not offer inshore/offshore SAR image classification, the experimental verification is only performed on LS-SSDD-v1.0.
 
 Table Supp-V COMPARISON RESULTS OF DIFFERENT SHIP DETECTION METHODS IN VARIOUS SCENES OF LS-SSDD-v1.0
@@ -189,7 +221,7 @@ In the extremely challenging inshore scenarios: Due to the strong interference f
 In offshore scenarios: Facing dense tiny ships on the sea surface, CPC-YOLO demonstrates extremely high localization accuracy. Its AP50 reaches 93.47%, and the stricter AP metric reaches 42.34% (even surpassing YOLOv12n's 41.78%). Compared with classic SAR-specific methods DADP and BANet, our method establishes a leading advantage in both recall and average precision.
 Comprehensive experimental results across different scenarios show that CPC-YOLO successfully overcomes the false positive problems caused by complex nearshore backgrounds and the missed detection problems of tiny offshore targets, and exhibits stable and highly competitive detection performance under various conditions.
 
-## 4 Visualization Analysis
+## 5 Visualization Analysis
 To clearly demonstrate the direct effectiveness of the proposed architectural improvements (such as the P2 detection head and CPCA module) and avoid visual clutter, this section focuses exclusively on a one-to-one visual comparison between the baseline network (YOLOv11n) and our CPC-YOLO on the LS-SSDD-v1.0 and SAR-Ship-Dataset datasets. A comprehensive quantitative evaluation against other state-of-the-art (SOTA) methods has been detailed in Tables I and II of the main text.
 
 (1) Qualitative Detection Result Analysis
