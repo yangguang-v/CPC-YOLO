@@ -119,6 +119,7 @@ TABLE IV THE ABLATION EXPERIMENT ON SAR-SHIP-DATASET OF THE ENTIRE SCENES
 
 (1) On the standalone addition of CPCA (Tables III and IV, Line 7):
 Although experiments have proven that the final architecture of "Adjusted Feature Map Scale (Add P2, Remove P5) + CPCA + Inner-PIoUv2" achieves the optimal performance, we need to rule out the possibility that the performance improvement is solely attributed to the introduction of high-resolution feature maps. By only adding the CPCA module to the baseline YOLOv11n, we observe that without changing the macroscopic network structure, the model's Precision is significantly improved, and the parameter count is slightly optimized. This fully confirms the independent effectiveness of the CPCA module in feature extraction, and demonstrates its synergistic enhancement effect with multi-scale structure adjustment.
+
 (2) On the standalone addition of Inner-PIoUv2 (Tables III and IV, Line 8):
 This experiment aims to isolate the impact of network architecture optimization and independently verify the superiority of the proposed loss function. The results show that, without any modification to the original YOLOv11n structure, simply replacing the loss function with Inner-PIoUv2 can effectively improve the model's Recall metric. This further highlights the inherent contribution of this dynamic loss function in improving bounding box regression and enhancing sensitivity to tiny objects.
 
